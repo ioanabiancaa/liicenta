@@ -4,21 +4,22 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 
 import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage implements OnInit {
-  
   title='Login';
   
   validations_form: FormGroup;
   errorMessage: string = '';
   
   constructor(
-    private navCtrl: NavController,
+    public navCtrl: NavController,
     private authService: AuthenticationService,
     private formBuilder: FormBuilder
   ) { }
@@ -60,6 +61,5 @@ export class LoginPage implements OnInit {
   goToRegisterPage(){
     this.navCtrl.navigateForward('/register');
   }
-
-
 }
+

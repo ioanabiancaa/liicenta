@@ -14,18 +14,13 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-input placeholder="Enter Age" [(ngModel)]="studentAge"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
           <ion-input placeholder="Enter Address" [(ngModel)]="studentAddress"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <ion-button (click)="CreateRecord()" [disabled]="!studentName || !studentAge || !studentAddress">
+        <ion-button (click)="CreateRecord()" [disabled]="!studentName || !studentAddress">
           <ion-icon size="small" slot="icon-only" name="add"></ion-icon>
           &nbsp;Create Record
         </ion-button>
@@ -37,7 +32,7 @@
   <ion-card *ngFor="let item of students">
     <span *ngIf="!item.isEdit; else elseBlock">
       <ion-card-header>
-        <ion-card-title>{{item.Name}} of {{item.Age}} years</ion-card-title>
+        <ion-card-title>{{item.Name}}</ion-card-title>
         <ion-card-subtitle>From: {{item.Address}}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
@@ -80,10 +75,6 @@
           <ion-input type="text" [(ngModel)]="item.EditName"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label><strong>Age</strong></ion-label>
-          <ion-input type="text" [(ngModel)]="item.EditAge"></ion-input>
-        </ion-item>
-        <ion-item>
           <ion-label><strong>Address</strong></ion-label>
           <ion-input type="text" [(ngModel)]="item.EditAddress"></ion-input>
         </ion-item>
@@ -92,3 +83,8 @@
   </ion-card>
  
 </ion-content>
+<ion-footer (click)="logout()">
+  <ion-toolbar color="secondary">
+    <ion-title>Log out</ion-title>
+  </ion-toolbar>
+</ion-footer>

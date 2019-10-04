@@ -9,6 +9,12 @@ import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule, NavController} from '@ionic/angular';
 
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../../environments/environment";
+import {AngularFirestoreModule} from "@angular/fire/firestore";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+
 describe('RegisterPage', () => {
   let component: RegisterPage;
   let fixture: ComponentFixture<RegisterPage>;
@@ -25,9 +31,13 @@ describe('RegisterPage', () => {
         ReactiveFormsModule, 
         FormsModule,
         IonicModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        AngularFireDatabaseModule,
         RouterTestingModule
       ],
-      providers:[FormBuilder]
+      providers:[FormBuilder, AngularFireAuth]
       
     })
     .compileComponents();
@@ -118,3 +128,7 @@ describe('RegisterPage', () => {
 
   });
 });
+
+
+
+
